@@ -7,8 +7,9 @@
 		private string _conta;
 
 		private double saldo;
+        private string v;
 
-		public Cliente Titular { get; set; }
+        public Cliente Titular { get; set; }
 
 		public string Nome_Agencia { get; set; }
 
@@ -104,7 +105,13 @@
 			TotalDeContasCriadas++;
 		}
 
-		public override string ToString()
+		public ContaCorrente(int numero_agencia, string conta) : this(numero_agencia) 
+        {
+			Numero_agencia = numero_agencia;
+			Conta = conta;
+        }
+
+        public override string ToString()
 		{
 
 			return $" === DADOS DA CONTA === \n" +

@@ -1,4 +1,6 @@
-﻿Console.WriteLine("Boas Vindas ao ByteBank, Atendimento.");
+﻿using bytebank.Modelos.Conta;
+
+Console.WriteLine("Boas Vindas ao ByteBank, Atendimento.");
 
 //TestaArrayInt();
 //TestaBuscarPalavra();
@@ -66,7 +68,7 @@ amostra.SetValue(2.35,4);
 
 //[5,9] [1,8] [7,1] [10] [6,9]
 
-TestaMediana(amostra);
+//TestaMediana(amostra);
 
 void TestaMediana(Array array)
 {
@@ -85,4 +87,23 @@ void TestaMediana(Array array)
     double mediana = (tamanho % 2 != 0) ? numerosOrdenados[meio] : (numerosOrdenados[meio] + numerosOrdenados[meio - 1]) / 2;
 
     Console.WriteLine($"Com base na amostra a mediana = {mediana}");
+}
+
+TestaArrayDeContasCorrentes();
+void TestaArrayDeContasCorrentes()
+{
+    //int[] valores = new int[] { 1, 2, 3, 5 };
+
+    ContaCorrente[] listaDeContas = new ContaCorrente[]
+    {
+        new ContaCorrente (874, "5679787-A"),
+        new ContaCorrente (874, "4456668-B"),
+        new ContaCorrente (874, "7781438-C")
+    };
+
+    for (int i = 0; i < listaDeContas.Length; i++)
+    {
+        ContaCorrente contaAtual = listaDeContas[i];
+        Console.WriteLine($"Indice: {i} - Conta {contaAtual.Conta}");
+    }
 }
