@@ -104,6 +104,6 @@ void TestaArrayDeContasCorrentes()
     for (int i = 0; i < listaDeContas.Length; i++)
     {
         ContaCorrente contaAtual = listaDeContas[i];
-        Console.WriteLine($"Indice: {i} - Conta {contaAtual.Conta}");
+        Console.WriteLine($"Indice: {i} - Agencia: {contaAtual.Numero_agencia} Conta: {contaAtual.Conta}");
     }
 }
