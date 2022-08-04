@@ -14,7 +14,7 @@ namespace bytebank_ATENDIMENTO.bytebank.Util
 
         public void Adicionar(ContaCorrente item) 
         {
-            Console.WriteLine($"Adicionando item na posição {_proximaPosicao}");
+            //Console.WriteLine($"Adicionando item na posição {_proximaPosicao}");
             VerificarCapacidade(_proximaPosicao + 1);
             _itens[_proximaPosicao] = item;
             _proximaPosicao++;
@@ -25,7 +25,7 @@ namespace bytebank_ATENDIMENTO.bytebank.Util
             {
                 return;
             }
-            Console.WriteLine("Aumentando a capacidade da lista!");
+            //Console.WriteLine("Aumentando a capacidade da lista!");
             ContaCorrente[] novoArray = new ContaCorrente[tamanhoNecessario];
 
             for (int i = 0; i < _itens.Length; i++)
@@ -33,6 +33,34 @@ namespace bytebank_ATENDIMENTO.bytebank.Util
                 novoArray[i] = _itens[i];
             }
             _itens = novoArray;
+        }
+
+        public void VerificarMaiorSaldo()
+        {
+            for (int i = 0; i < _itens.Length; i++)
+            {
+                int agencia = _itens[i].Numero_agencia;
+                string conta = _itens[i].Conta;
+                double saldo = _itens[i].Saldo;
+                Console.WriteLine($"Indice: {i} Agencia: {agencia} Conta: {conta} Saldo: R$ {saldo}" );
+            }
+            Console.WriteLine("---------------------------------------------------------------------------");
+            double[] listaSaldo = new double[_proximaPosicao];
+            string[] listaConta = new string[_proximaPosicao];
+            for (int i = 0; i < +_itens.Length; i++)
+            {
+                double saldo = _itens[i].Saldo;
+                string conta = _itens[i].Conta;
+
+                listaSaldo[i] = saldo;
+                listaConta[i] = conta;
+            }
+            double[] saldoOrdenado = (double[])listaSaldo.Clone();
+            Array.Sort(saldoOrdenado,listaConta);
+            Console.WriteLine("---------------------------------------------------------------------------");
+
+            Console.WriteLine($"A conta com o maior Saldo é a conta: {listaConta.Last()}, seu Saldo atual é de R$ {saldoOrdenado.Last()}");
+     
         }
     }
 }

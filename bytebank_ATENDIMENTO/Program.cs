@@ -48,6 +48,7 @@ void TestaBuscarPalavra()
 
     foreach (string palavra in arrayDePalavras)
     {
+        
         if (palavra.Equals(busca))
         {
             Console.WriteLine($"Palavra Encontrada: {busca}");
@@ -90,7 +91,7 @@ void TestaMediana(Array array)
     Console.WriteLine($"Com base na amostra a mediana = {mediana}");
 }
 
-TestaArrayDeContasCorrentes();
+//TestaArrayDeContasCorrentes();
 
 void TestaArrayDeContasCorrentes()
 {
@@ -105,3 +106,21 @@ void TestaArrayDeContasCorrentes()
     listaDeContas.Adicionar(new ContaCorrente(874, "7781438-F"));
 
 }
+
+//Desafio: método que retorna a conta com maior saldo: INICIO
+TestaArraydeContasCorrentesComSaldo();
+
+void TestaArraydeContasCorrentesComSaldo()
+{
+    ListaDeContasCorrentes listaDeContas = new();
+    listaDeContas.Adicionar(new ContaCorrente(874, "5679787-A", 5900.30));
+    listaDeContas.Adicionar(new ContaCorrente(874, "4456668-B", 700.12));
+    listaDeContas.Adicionar(new ContaCorrente(874, "7781438-C", 1300.99));
+    listaDeContas.Adicionar(new ContaCorrente(874, "7781438-D", 2369565.00));
+    listaDeContas.Adicionar(new ContaCorrente(874, "7781438-E", 935));
+    listaDeContas.Adicionar(new ContaCorrente(874, "7781438-F", 13365.45));
+
+    listaDeContas.VerificarMaiorSaldo();
+
+}
+//Desafio: método que retorna a conta com maior saldo: FIM

@@ -111,7 +111,13 @@
 			Conta = conta;
         }
 
-        public override string ToString()
+		public ContaCorrente(int numero_agencia, string conta, double saldo)
+		{
+			Numero_agencia = numero_agencia;
+			Conta = conta;
+			Saldo = saldo;
+		}
+		public override string ToString()
 		{
 
 			return $" === DADOS DA CONTA === \n" +
