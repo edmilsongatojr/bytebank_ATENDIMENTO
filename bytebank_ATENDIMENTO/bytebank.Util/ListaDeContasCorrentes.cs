@@ -7,12 +7,12 @@ namespace bytebank_ATENDIMENTO.bytebank.Util
         private ContaCorrente[] _itens = null;
         private int _proximaPosicao = 0;
 
-        public ListaDeContasCorrentes(int tamanhoInicial=5)
+        public ListaDeContasCorrentes(int tamanhoInicial = 5)
         {
-                _itens = new ContaCorrente[tamanhoInicial];
+            _itens = new ContaCorrente[tamanhoInicial];
         }
 
-        public void Adicionar(ContaCorrente item) 
+        public void Adicionar(ContaCorrente item)
         {
             //Console.WriteLine($"Adicionando item na posição {_proximaPosicao}");
             VerificarCapacidade(_proximaPosicao + 1);
@@ -42,7 +42,7 @@ namespace bytebank_ATENDIMENTO.bytebank.Util
                 int agencia = _itens[i].Numero_agencia;
                 string conta = _itens[i].Conta;
                 double saldo = _itens[i].Saldo;
-                Console.WriteLine($"Indice: {i} Agencia: {agencia} Conta: {conta} Saldo: R$ {saldo}" );
+                Console.WriteLine($"Indice: {i} Agencia: {agencia} Conta: {conta} Saldo: R$ {saldo}");
             }
             Console.WriteLine("---------------------------------------------------------------------------");
             double[] listaSaldo = new double[_proximaPosicao];
@@ -56,11 +56,11 @@ namespace bytebank_ATENDIMENTO.bytebank.Util
                 listaConta[i] = conta;
             }
             double[] saldoOrdenado = (double[])listaSaldo.Clone();
-            Array.Sort(saldoOrdenado,listaConta);
+            Array.Sort(saldoOrdenado, listaConta);
             Console.WriteLine("---------------------------------------------------------------------------");
 
             Console.WriteLine($"A conta com o maior Saldo é a conta: {listaConta.Last()}, seu Saldo atual é de R$ {saldoOrdenado.Last()}");
-     
+
         }
 
         public void Remover(ContaCorrente conta)
@@ -75,7 +75,7 @@ namespace bytebank_ATENDIMENTO.bytebank.Util
                     break;
                 }
             }
-            for (int i = indiceItem; i < _proximaPosicao-1; i++)
+            for (int i = indiceItem; i < _proximaPosicao - 1; i++)
             {
                 _itens[i] = _itens[i + 1];
             }
@@ -94,8 +94,25 @@ namespace bytebank_ATENDIMENTO.bytebank.Util
                 }
             }
         }
+
+        public ContaCorrente RecuperarContaNoIndice(int indice)
+        {
+            if (indice < 0 || indice >= _proximaPosicao)
+            {
+                throw new ArgumentOutOfRangeException(nameof(indice));
+            }
+
+            return _itens[indice];
+        }
+
+        public int Tamanho { get { return _proximaPosicao; } }
+
+        public ContaCorrente this[int indice]
+        {
+            get
+            {
+                return RecuperarContaNoIndice(indice);
+            }
+        }
     }
-
-
-
 }

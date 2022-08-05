@@ -1,5 +1,6 @@
 ﻿using bytebank.Modelos.Conta;
 using bytebank_ATENDIMENTO.bytebank.Util;
+using System.Xml.Linq;
 
 Console.WriteLine("Boas Vindas ao ByteBank, Atendimento.");
 
@@ -120,14 +121,23 @@ void TestaArraydeContasCorrentesComSaldo()
     listaDeContas.Adicionar(new ContaCorrente(874, "7781438-F", 1365.45));
     ContaCorrente contaJoao = new ContaCorrente(354, "659452-G", 356);
     listaDeContas.Adicionar(contaJoao);
+
     //Desafio: método que retorna a conta com maior saldo: INICIO
     //listaDeContas.VerificarMaiorSaldo();
     //Desafio: método que retorna a conta com maior saldo: FIM
 
-    listaDeContas.ExibirLista();
-    Console.WriteLine();
-   listaDeContas.Remover(contaJoao);
-    Console.WriteLine();
-   listaDeContas.ExibirLista();
-}
 
+    //listaDeContas.ExibirLista();
+    //Console.WriteLine();
+    //listaDeContas.Remover(contaJoao);
+    //Console.WriteLine();
+    //listaDeContas.ExibirLista();
+
+
+    for (int i = 0; i < listaDeContas.Tamanho; i++)
+    {
+        ContaCorrente conta = listaDeContas[i];
+        Console.WriteLine($"Indice: [{i}] | Conta: {conta.Numero_agencia}/{conta.Conta}");
+    }
+
+}
