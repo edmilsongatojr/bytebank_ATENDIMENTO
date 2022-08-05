@@ -4,6 +4,7 @@ using System.Xml.Linq;
 
 Console.WriteLine("Boas Vindas ao ByteBank, Atendimento.");
 
+#region Exemplos Arrays em C#
 //TestaArrayInt();
 //TestaBuscarPalavra();
 
@@ -59,8 +60,6 @@ void TestaBuscarPalavra()
     }
 }
 
-
-
 Array amostra = Array.CreateInstance(typeof(double),5);
 
 amostra.SetValue(5.9,0);
@@ -108,7 +107,7 @@ void TestaArrayDeContasCorrentes()
 
 }
 
-TestaArraydeContasCorrentesComSaldo();
+//TestaArraydeContasCorrentesComSaldo();
 
 void TestaArraydeContasCorrentesComSaldo()
 {
@@ -141,3 +140,6 @@ void TestaArraydeContasCorrentesComSaldo()
     }
 
 }
+
+#endregion
+
