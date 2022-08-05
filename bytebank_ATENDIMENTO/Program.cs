@@ -1,4 +1,5 @@
 ﻿using bytebank.Modelos.Conta;
+using bytebank_ATENDIMENTO.bytebank.Exceptions;
 using bytebank_ATENDIMENTO.bytebank.Util;
 using System.Collections;
 using System.Xml.Linq;
@@ -153,43 +154,60 @@ List<ContaCorrente> _listaDecContas = new List<ContaCorrente>()
     new ContaCorrente(8, "7781438-E"){Saldo=423},
     new ContaCorrente(4, "7781438-F"){Saldo=7523}
 };
+
 AtendimentoCliente();
+
 void AtendimentoCliente()
 {
-    char opcao = '0';
-    while (opcao != '6')
+    try
     {
-        Console.Clear();
-        Console.WriteLine("=======================================================");
-        Console.WriteLine("===                  Atendimento                    ===");
-        Console.WriteLine("===                                                 ===");
-        Console.WriteLine("=== 1 - Cadastrar Nova Conta                        ===");
-        Console.WriteLine("=== 2 - Listar Contas                               ===");
-        Console.WriteLine("=== 3 - Remover Conta                               ===");
-        Console.WriteLine("=== 4 - Ordenar Contas                              ===");
-        Console.WriteLine("=== 5 - Pesquisar Conta                             ===");
-        Console.WriteLine("=== 6 - Sair do Sistema                             ===");
-        Console.WriteLine("===                                                 ===");
-        Console.WriteLine("=======================================================");
-        Console.WriteLine("\n\n");
-        Console.Write("Selecione a opção desejada: ");
-        opcao = Console.ReadLine()[0];
-        switch (opcao)
+        char opcao = '0';
+        while (opcao != '6')
         {
-            case '1':
-                CadastrarConta();
-                break;
-            case '2':
-                ListarContas();
-                break;
-            case '6':
-                Console.ReadKey();
-                break;
-            default:
-                Console.WriteLine("Opcao não implementada. Selecione as opção de 1 à 6!");
-                break;
+            Console.Clear();
+            Console.WriteLine("=======================================================");
+            Console.WriteLine("===                  Atendimento                    ===");
+            Console.WriteLine("===                                                 ===");
+            Console.WriteLine("=== 1 - Cadastrar Nova Conta                        ===");
+            Console.WriteLine("=== 2 - Listar Contas                               ===");
+            Console.WriteLine("=== 3 - Remover Conta                               ===");
+            Console.WriteLine("=== 4 - Ordenar Contas                              ===");
+            Console.WriteLine("=== 5 - Pesquisar Conta                             ===");
+            Console.WriteLine("=== 6 - Sair do Sistema                             ===");
+            Console.WriteLine("===                                                 ===");
+            Console.WriteLine("=======================================================");
+            Console.WriteLine("\n\n");
+            Console.Write("Selecione a opção desejada: ");
+            try
+            {
+                opcao = Console.ReadLine()[0];
+            }
+            catch (Exception exececao)
+            {
+                throw new ByteBankException(exececao.Message);  
+            }
+            switch (opcao)
+            {
+                case '1':
+                    CadastrarConta();
+                    break;
+                case '2':
+                    ListarContas();
+                    break;
+                case '6':
+                    Console.ReadKey();
+                    break;
+                default:
+                    Console.WriteLine("Opcao não implementada. Selecione as opção de 1 à 6!");
+                    break;
+            }
         }
     }
+    catch (ByteBankException excecao)
+    {
+        Console.WriteLine($"{excecao.Message}");
+    }
+    
 }
 
 void CadastrarConta()
