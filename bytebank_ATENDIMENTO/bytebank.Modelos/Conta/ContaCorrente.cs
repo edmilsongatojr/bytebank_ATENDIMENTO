@@ -109,7 +109,10 @@
         {
 			Numero_agencia = numero_agencia;
 			Conta = conta;
-        }
+			Titular = new Cliente();
+			TotalDeContasCriadas++;
+		
+	    }
 
 		public ContaCorrente(int numero_agencia, string conta, double saldo)
 		{

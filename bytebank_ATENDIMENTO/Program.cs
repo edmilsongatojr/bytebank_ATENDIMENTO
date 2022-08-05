@@ -1,5 +1,6 @@
 ﻿using bytebank.Modelos.Conta;
 using bytebank_ATENDIMENTO.bytebank.Util;
+using System.Collections;
 using System.Xml.Linq;
 
 Console.WriteLine("Boas Vindas ao ByteBank, Atendimento.");
@@ -143,3 +144,95 @@ void TestaArraydeContasCorrentesComSaldo()
 
 #endregion
 
+ArrayList _listaDecContas = new ArrayList();
+AtendimentoCliente();
+void AtendimentoCliente()
+{
+    char opcao = '0';
+    while (opcao!='6')
+    {
+        Console.Clear();
+        Console.WriteLine("=======================================================");
+        Console.WriteLine("===                  Atendimento                    ===");
+        Console.WriteLine("===                                                 ===");
+        Console.WriteLine("=== 1 - Cadastrar Nova Conta                        ===");
+        Console.WriteLine("=== 2 - Listar Contas                               ===");
+        Console.WriteLine("=== 3 - Remover Conta                               ===");
+        Console.WriteLine("=== 4 - Ordenar Contas                              ===");
+        Console.WriteLine("=== 5 - Pesquisar Conta                             ===");
+        Console.WriteLine("=== 6 - Sair do Sistema                             ===");
+        Console.WriteLine("===                                                 ===");
+        Console.WriteLine("=======================================================");
+        Console.WriteLine("\n\n");
+        Console.Write("Selecione a opção desejada: ");
+        opcao = Console.ReadLine()[0];
+        switch (opcao)
+        {
+            case '1': CadastrarConta();
+                break;
+            case '2': ListarContas();
+                break;
+            case '6': Console.ReadKey();
+                break;
+            default: Console.WriteLine("Opcao não implementada. Selecione as opção de 1 à 6!");
+                break;
+        }
+    }
+}
+
+
+
+void CadastrarConta()
+{
+    Console.Clear();
+    Console.WriteLine("=======================================================");
+    Console.WriteLine("===              CADASTRO DE CLIENTES               ===");
+    Console.WriteLine("===                                                 ===");
+    Console.WriteLine("===            Informe os dados da conta            ===");
+    Console.WriteLine("=======================================================");
+    Console.Write("Agencia: ");
+    int numeroAgencia = int.Parse(Console.ReadLine());
+    Console.Write("Conta: ");
+    string numeroConta = Console.ReadLine();
+
+    ContaCorrente conta = new ContaCorrente(numeroAgencia, numeroConta);
+
+    Console.Write("Saldo Inicial: ");
+    conta.Saldo = double.Parse(Console.ReadLine());
+    Console.Write("Titular: ");
+    conta.Titular.Nome = Console.ReadLine();
+    Console.Write("CPF: ");
+    conta.Titular.Cpf = Console.ReadLine();
+    Console.Write("Profissão: ");
+    conta.Titular.Profissao = Console.ReadLine();
+    _listaDecContas.Add(conta);
+    Console.WriteLine("Conta cadastrada com sucesso!");
+    Console.ReadKey();
+}
+
+void ListarContas()
+{
+    Console.Clear();
+    Console.WriteLine("=======================================================");
+    Console.WriteLine("===                 LISTA DE CONTAS                 ===");
+    Console.WriteLine("=======================================================");
+    Console.WriteLine("\n");
+    if (_listaDecContas.Count <= 0)
+    {
+        Console.WriteLine("ATENÇÃO! | Não existe nenhuma conta cadastrada para ser listada!");
+        Console.ReadKey();
+        return;
+    }
+    foreach (ContaCorrente item in _listaDecContas)
+    {
+        Console.WriteLine("=======================================================");
+        Console.WriteLine("===                 Dados da Conta                  ===");
+        Console.WriteLine($"Número da Conta:  {item.Conta}");
+        Console.WriteLine($"Titutar da Conta: {item.Titular.Nome}");
+        Console.WriteLine($"CPF do Titular:   {item.Titular.Cpf}");
+        Console.WriteLine($"Profissão do Titular:   {item.Titular.Profissao}");
+        Console.WriteLine("=======================================================");
+        Console.WriteLine("\n");
+        Console.ReadKey();
+    }
+}
