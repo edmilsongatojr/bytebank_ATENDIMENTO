@@ -107,7 +107,6 @@ void TestaArrayDeContasCorrentes()
 
 }
 
-//Desafio: método que retorna a conta com maior saldo: INICIO
 TestaArraydeContasCorrentesComSaldo();
 
 void TestaArraydeContasCorrentesComSaldo()
@@ -116,11 +115,19 @@ void TestaArraydeContasCorrentesComSaldo()
     listaDeContas.Adicionar(new ContaCorrente(874, "5679787-A", 5900.30));
     listaDeContas.Adicionar(new ContaCorrente(874, "4456668-B", 700.12));
     listaDeContas.Adicionar(new ContaCorrente(874, "7781438-C", 1300.99));
-    listaDeContas.Adicionar(new ContaCorrente(874, "7781438-D", 2369565.00));
+    listaDeContas.Adicionar(new ContaCorrente(874, "7781438-D", 2365.00));
     listaDeContas.Adicionar(new ContaCorrente(874, "7781438-E", 935));
-    listaDeContas.Adicionar(new ContaCorrente(874, "7781438-F", 13365.45));
+    listaDeContas.Adicionar(new ContaCorrente(874, "7781438-F", 1365.45));
+    ContaCorrente contaJoao = new ContaCorrente(354, "659452-G", 356);
+    listaDeContas.Adicionar(contaJoao);
+    //Desafio: método que retorna a conta com maior saldo: INICIO
+    //listaDeContas.VerificarMaiorSaldo();
+    //Desafio: método que retorna a conta com maior saldo: FIM
 
-    listaDeContas.VerificarMaiorSaldo();
-
+    listaDeContas.ExibirLista();
+    Console.WriteLine();
+   listaDeContas.Remover(contaJoao);
+    Console.WriteLine();
+   listaDeContas.ExibirLista();
 }
-//Desafio: método que retorna a conta com maior saldo: FIM
+
