@@ -42,32 +42,32 @@ void TestaBuscarPalavra()
 
     for (int i = 0; i < arrayDePalavras.Length; i++)
     {
-        Console.Write($"Digite {i+1}ª Palavra:");
+        Console.Write($"Digite {i + 1}ª Palavra:");
         arrayDePalavras[i] = Console.ReadLine();
-    }    
+    }
 
     Console.Write("Digite palavra a ser encontrada:");
     var busca = Console.ReadLine();
 
     foreach (string palavra in arrayDePalavras)
     {
-        
+
         if (palavra.Equals(busca))
         {
             Console.WriteLine($"Palavra Encontrada: {busca}");
             break;
         }
-        
+
     }
 }
 
-Array amostra = Array.CreateInstance(typeof(double),5);
+Array amostra = Array.CreateInstance(typeof(double), 5);
 
-amostra.SetValue(5.9,0);
-amostra.SetValue(1.8,1);
-amostra.SetValue(7.1,2);
-amostra.SetValue(10,3);
-amostra.SetValue(2.35,4);
+amostra.SetValue(5.9, 0);
+amostra.SetValue(1.8, 1);
+amostra.SetValue(7.1, 2);
+amostra.SetValue(10, 3);
+amostra.SetValue(2.35, 4);
 
 //[5,9] [1,8] [7,1] [10] [6,9]
 
@@ -76,12 +76,12 @@ amostra.SetValue(2.35,4);
 void TestaMediana(Array array)
 {
 
-    if ((array == null) || (array.Length==0))
+    if ((array == null) || (array.Length == 0))
     {
-        Console.WriteLine($"Array para cálculo da mediana está vazio ou nulo");    
+        Console.WriteLine($"Array para cálculo da mediana está vazio ou nulo");
     }
 
-    double[] numerosOrdenados = (double [])array.Clone();
+    double[] numerosOrdenados = (double[])array.Clone();
     Array.Sort(numerosOrdenados);
 
     int tamanho = numerosOrdenados.Length;
@@ -144,12 +144,20 @@ void TestaArraydeContasCorrentesComSaldo()
 
 #endregion
 
-ArrayList _listaDecContas = new ArrayList();
+List<ContaCorrente> _listaDecContas = new List<ContaCorrente>()
+{
+    new ContaCorrente(74, "5679787-A"){Saldo=524},
+    new ContaCorrente(87, "4456668-B"){Saldo=8211},
+    new ContaCorrente(84, "7781438-C"){Saldo=34512},
+    new ContaCorrente(874, "7781438-D"){Saldo=75},
+    new ContaCorrente(8, "7781438-E"){Saldo=423},
+    new ContaCorrente(4, "7781438-F"){Saldo=7523}
+};
 AtendimentoCliente();
 void AtendimentoCliente()
 {
     char opcao = '0';
-    while (opcao!='6')
+    while (opcao != '6')
     {
         Console.Clear();
         Console.WriteLine("=======================================================");
@@ -168,19 +176,21 @@ void AtendimentoCliente()
         opcao = Console.ReadLine()[0];
         switch (opcao)
         {
-            case '1': CadastrarConta();
+            case '1':
+                CadastrarConta();
                 break;
-            case '2': ListarContas();
+            case '2':
+                ListarContas();
                 break;
-            case '6': Console.ReadKey();
+            case '6':
+                Console.ReadKey();
                 break;
-            default: Console.WriteLine("Opcao não implementada. Selecione as opção de 1 à 6!");
+            default:
+                Console.WriteLine("Opcao não implementada. Selecione as opção de 1 à 6!");
                 break;
         }
     }
 }
-
-
 
 void CadastrarConta()
 {
@@ -206,6 +216,7 @@ void CadastrarConta()
     Console.Write("Profissão: ");
     conta.Titular.Profissao = Console.ReadLine();
     _listaDecContas.Add(conta);
+
     Console.WriteLine("Conta cadastrada com sucesso!");
     Console.ReadKey();
 }
@@ -228,6 +239,7 @@ void ListarContas()
         Console.WriteLine("=======================================================");
         Console.WriteLine("===                 Dados da Conta                  ===");
         Console.WriteLine($"Número da Conta:  {item.Conta}");
+        Console.WriteLine($"Saldo da Conta:  {item.Saldo}");
         Console.WriteLine($"Titutar da Conta: {item.Titular.Nome}");
         Console.WriteLine($"CPF do Titular:   {item.Titular.Cpf}");
         Console.WriteLine($"Profissão do Titular:   {item.Titular.Profissao}");
@@ -236,3 +248,4 @@ void ListarContas()
         Console.ReadKey();
     }
 }
+
