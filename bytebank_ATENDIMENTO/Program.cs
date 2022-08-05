@@ -194,6 +194,8 @@ void AtendimentoCliente()
                 case '2':
                     ListarContas();
                     break;
+                case '3':  RemoverContas();
+                    break;
                 case '6':
                     Console.ReadKey();
                     break;
@@ -209,6 +211,8 @@ void AtendimentoCliente()
     }
     
 }
+
+
 
 void CadastrarConta()
 {
@@ -267,3 +271,27 @@ void ListarContas()
     }
 }
 
+void RemoverContas()
+{
+    Console.Clear();
+    Console.WriteLine("=======================================================");
+    Console.WriteLine("===                 REMOVER  CONTAS                 ===");
+    Console.WriteLine("=======================================================");
+    Console.WriteLine("\n");
+    Console.Write("Informe o número da Conta: ");
+    string numeroConta = Console.ReadLine();
+    ContaCorrente conta = null;
+    foreach (var item in _listaDecContas)
+    {
+        if (item.Conta.Equals(numeroConta))
+        {
+            conta = item;
+        }
+    }
+
+    if (conta!=null)
+    {
+        _listaDecContas.Remove(conta);
+        Console.WriteLine($"A conta [ {conta} ] foi removida!");
+    }
+}
