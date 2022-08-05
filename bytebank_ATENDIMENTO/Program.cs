@@ -292,6 +292,11 @@ void RemoverContas()
     if (conta!=null)
     {
         _listaDecContas.Remove(conta);
-        Console.WriteLine($"A conta [ {conta} ] foi removida!");
+        Console.WriteLine($"A conta \n {conta} \n foi removida com sucesso!");
     }
+    else
+    {
+        Console.WriteLine($"A conta \n {conta} \n não foi encontrada para remoção!!");
+    }
+    Console.ReadKey();
 }
