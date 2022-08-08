@@ -196,6 +196,10 @@ void AtendimentoCliente()
                     break;
                 case '3':  RemoverContas();
                     break;
+                case '4': OrdenarContas();
+                    break;
+                case '5': PesquisarConta();
+                    break;
                 case '6':
                     Console.ReadKey();
                     break;
@@ -211,7 +215,6 @@ void AtendimentoCliente()
     }
     
 }
-
 
 
 void CadastrarConta()
@@ -299,4 +302,16 @@ void RemoverContas()
         Console.WriteLine($"A conta \n {conta} \n não foi encontrada para remoção!!");
     }
     Console.ReadKey();
+}
+
+void OrdenarContas()
+{
+    _listaDecContas.Sort();
+    Console.WriteLine("... A lista de contas foi ordenada com sucesso!...");
+    Console.ReadKey();
+}
+
+void PesquisarConta()
+{
+   
 }
