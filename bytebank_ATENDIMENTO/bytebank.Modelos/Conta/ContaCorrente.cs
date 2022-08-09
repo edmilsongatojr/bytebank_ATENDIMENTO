@@ -124,6 +124,7 @@
 		{
 
 			return $" === DADOS DA CONTA === \n" +
+				   $"Agência: {this.Numero_agencia}\n"+
 				   $"Número da Conta : {this.Conta} \n" +
 				   $"Titular da Conta: {this.Titular.Nome} \n" +
 				   $"CPF do Titular  : {this.Titular.Cpf} \n" +
