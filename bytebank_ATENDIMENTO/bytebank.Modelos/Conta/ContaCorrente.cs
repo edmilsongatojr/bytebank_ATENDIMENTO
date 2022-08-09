@@ -114,12 +114,13 @@
 		
 	    }
 
-		public ContaCorrente(int numero_agencia, string conta, double saldo)
-		{
-			Numero_agencia = numero_agencia;
-			Conta = conta;
-			Saldo = saldo;
-		}
+		//public ContaCorrente(int numero_agencia, string conta, double saldo)
+		//{
+		//	Numero_agencia = numero_agencia;
+		//	Conta = conta;
+		//	Saldo = saldo;
+		//}
+
 		public override string ToString()
 		{
 
@@ -129,7 +130,7 @@
 				   $"Titular da Conta: {this.Titular.Nome} \n" +
 				   $"CPF do Titular  : {this.Titular.Cpf} \n" +
 				   $"Saldo da Conta: {this.Saldo}\n"+
-				   $"Profissão do Titular: { this.Titular.Profissao}";
+				   $"Profissão do Titular: { this.Titular.Profissao}\n\n";
 		}
 
 		//O ? ABAIXO SIGNIFICA QUE PODE RECEBER UM OBJETO NULL
