@@ -5,8 +5,22 @@
 
         public string Cpf { get; set; }
 
-        //private string _nome;
-        public string Nome { get; set; }
+        private string _nome;
+        public string Nome
+        {
+            get
+            {
+                return _nome;
+            }
+            set
+            {
+                if (value.Length < 3)
+                {
+                    Console.WriteLine("Nome do Titular precisar ter pelo menos 3 caracteres!");
+                }
+                _nome = value; 
+            }
+        }
         //public string Nome { get; set; }
         public string Profissao { get; set; }
 
