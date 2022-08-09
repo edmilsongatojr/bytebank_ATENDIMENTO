@@ -261,13 +261,14 @@ void ListarContas()
     }
     foreach (ContaCorrente item in _listaDecContas)
     {
-        Console.WriteLine("=======================================================");
-        Console.WriteLine("===                 Dados da Conta                  ===");
-        Console.WriteLine($"Número da Conta:  {item.Conta}");
-        Console.WriteLine($"Saldo da Conta:  {item.Saldo}");
-        Console.WriteLine($"Titutar da Conta: {item.Titular.Nome}");
-        Console.WriteLine($"CPF do Titular:   {item.Titular.Cpf}");
-        Console.WriteLine($"Profissão do Titular:   {item.Titular.Profissao}");
+        //Console.WriteLine("=======================================================");
+        //Console.WriteLine("===                 Dados da Conta                  ===");
+        //Console.WriteLine($"Número da Conta:  {item.Conta}");
+        //Console.WriteLine($"Saldo da Conta:  {item.Saldo}");
+        //Console.WriteLine($"Titutar da Conta: {item.Titular.Nome}");
+        //Console.WriteLine($"CPF do Titular:   {item.Titular.Cpf}");
+        //Console.WriteLine($"Profissão do Titular:   {item.Titular.Profissao}");
+        Console.WriteLine(item.ToString());
         Console.WriteLine("=======================================================");
         Console.WriteLine("\n");
         Console.ReadKey();
@@ -358,28 +359,31 @@ void PesquisarConta()
 
 ContaCorrente ConsultaPorNummeroConta(string? numeroConta)
 {
-    ContaCorrente conta = null;
-    for (int i = 0; i < _listaDecContas.Count; i++)
-    {
-        if (_listaDecContas[i].Conta.Equals(numeroConta))
-        {
-            conta = _listaDecContas[i];
-        }
-    }
-    
-    return conta;
+    //ContaCorrente conta = null;
+    //for (int i = 0; i < _listaDecContas.Count; i++)
+    //{
+    //    if (_listaDecContas[i].Conta.Equals(numeroConta))
+    //    {
+    //        conta = _listaDecContas[i];
+    //    }
+    //}
+    //return conta;
+
+    return _listaDecContas.Where(conta => conta.Conta.Equals(numeroConta)).FirstOrDefault();
 }
     ContaCorrente ConsultaPorCPFTitular(string? cpf)
 {
-    ContaCorrente conta = null;
-    for (int i = 0; i < _listaDecContas.Count; i++)
-    {
-        if (_listaDecContas[i].Titular.Cpf.Equals(cpf))
-        {
-            conta = _listaDecContas[i];
-        }
-    }
-    return conta;
+    //ContaCorrente conta = null;
+    //for (int i = 0; i < _listaDecContas.Count; i++)
+    //{
+    //    if (_listaDecContas[i].Titular.Cpf.Equals(cpf))
+    //    {
+    //        conta = _listaDecContas[i];
+    //    }
+    //}
+    //return conta;
+    return _listaDecContas.Where(conta=>conta.Titular.Cpf==cpf).FirstOrDefault();
+    
 }
 
 
